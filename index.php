@@ -1,3 +1,8 @@
+<?php
+$site = include(__DIR__ . '/config/site.php');
+$pg = include(__DIR__ . '/config/pg.php');
+
+?>
 <!DOCTYPE html>
 <html lang="th" class="">
 <head>
