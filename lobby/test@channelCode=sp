@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SimplePlay</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="true"/>
+    <meta name="screen-orientation" content="portrait|landscape"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+	<link id="favicon" type="image/ico" rel="shortcut icon" href="/favicon.ico" />
+    <style>
+        html, body {
+             -ms-touch-action: none;
+            background: #000000;
+    		background-repeat: no-repeat;
+    		background-attachment: fixed;
+    		background-position: center; 
+            padding: 0;
+            border: 0;
+            margin: 0;
+			width: 100%;
+    		overflow: hidden;
+    		font-family: "NotoSansCJKsc";
+            height: 100%;
+				-webkit-user-select:none;
+				-webkit-touch-callout:none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+		function LibPath(){return initData[getLocation()].cdn+initData.lib+"/"+initData.libVer+"/"}function ConfigPath(){return initData[getLocation()].cdn+initData.config+"/"}function CDNData(){return initData}function getLocation(){return userLocation}var wm="",gamediv=document.createElement("div");gamediv.id="gameDiv",gamediv.style.margin="auto",gamediv.style.width="100%",gamediv.style.height="100%",gamediv.className="egret-player",gamediv.setAttribute("data-entry-class","Main"),gamediv.setAttribute("data-orientation","auto"),gamediv.setAttribute("data-frame-rate","30"),gamediv.setAttribute("data-show-paint-rect","false"),gamediv.setAttribute("data-show-fps","false"),gamediv.setAttribute("data-show-log","false"),gamediv.setAttribute("data-show-fps-style","x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9"),document.body.appendChild(gamediv);var libLoadCount=0,libList=["libs.js"];function initClient(){if(initData.libVer)for(var t=0;t<libList.length;t++){var e=document.createElement("script");e.setAttribute("egret","lib");var i=LibPath()+libList[t]+"?v="+initData.libVer;e.setAttribute("src",i),e.onload=onLibLoaded,document.head.appendChild(e)}}function onLibLoaded(){libLoadCount++,libList.length==libLoadCount&&loadMain()}function loadMain(){var t=window.location.search,e=new URLSearchParams(t).get("mobile");"web"==(wm=e?"true"==e.toString()?"mobile":"web":isMobile()?"mobile":"web")?(gamediv.setAttribute("data-scale-mode","showAll"),gamediv.setAttribute("data-content-width","1300"),gamediv.setAttribute("data-content-height","670"),gamediv.setAttribute("data-multi-fingered","2")):(gamediv.setAttribute("data-scale-mode","fixedWidth"),gamediv.setAttribute("data-content-width","1080"),gamediv.setAttribute("data-content-height","1920"),gamediv.setAttribute("data-multi-fingered","1"));var i=document.createElement("script");i.type="text/javascript",i.src=LibPath()+"main."+wm+".min.js?v="+initData.libVer,document.head.appendChild(i),i.onload=function(t){egret.runEgret({renderMode:"canvas",audioType:0,antialias:!1})},i.onerror=function(t){egret.runEgret({renderMode:"canvas",audioType:0,antialias:!1})}}var initData=null,userLocation=window.localStorage.getItem("userLocation");function init(){var t=new Date;requestFile("./cdn.json?v="+t.getTime(),e=>{requestFile((initData=JSON.parse(e)).requestIp+"?v="+t.getTime(),initConfig,checkVersion,3e3)})}function initConfig(t){try{var e=JSON.parse(t);userLocation=e.CountryCode}catch(t){}initData[getLocation()]||(userLocation="default"),window.localStorage.setItem("userLocation",userLocation),AvaildCdn=initData[userLocation].cdn,checkVersion()}function checkVersion(){var t=new Date;requestFile(initData[getLocation()].cdn+initData.lib+"/clientVersion.dat?v="+t.getTime(),t=>{initData.libVer=t.trim(),initClient()},null,0,!0)}function requestFile(t,e,i,a,n){var o=new XMLHttpRequest;a>0?(o.timeout=a,i&&(o.ontimeout=i),o.open("GET",t,!0)):n?o.open("GET",t,!0):o.open("GET",t,!1),o.onreadystatechange=function(){4===o.readyState&&(200===o.status||0==o.status?e(o.responseText):i&&i())},o.send(null)}function isMobile(){return!!(navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPad/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i))}userLocation||(userLocation="default"),init();var standalone=1;"standalone"in window.navigator&&!window.navigator.standalone&&(standalone=0);var is_ios_chrome=0;navigator.userAgent.toLowerCase().indexOf("crios/")>-1&&(is_ios_chrome=1);var ischrome=0;navigator.userAgent.toLowerCase().indexOf("chrome/")>-1&&(ischrome=1);var issafari=0;if(0==ischrome&&0==is_ios_chrome&&(issafari=1),0==standalone&&issafari>0){var dummy=document.createElement("div");dummy.innerHTML=".",document.body.appendChild(dummy)}
+    </script>
+</body>
+</html>

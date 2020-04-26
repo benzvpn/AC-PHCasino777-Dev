@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head append-html="/game/html5/instant/evoplay/rolldice/head.html?v=0.1.51">
+    <script>var jsvars = {
+    "game_path": "\/game\/html5\/instant\/evoplay\/rolldice\/",
+    "base_path": "\/game\/html5\/instant\/",
+    "game_name": "instant\\html5\\evoplay\\rolldice",
+    "customVars": "7b2230223a2231363733363736222c2231223a2231222c2232223a2231222c2273223a226635303938626339616463363039656134313234396237353536313231326132227d",
+    "back_url": "https:\/\/www.allcasino.bet",
+    "cash_url": "",
+    "redirect_inside_iframe": false,
+    "action_url": "\/fullstate\/html5\/evoplay\/rolldice\/?project=718",
+    "language": "en",
+    "debug": false,
+    "show_clock": true,
+    "show_history": false,
+    "hosts_for_static": [
+        "https:\/\/play.8provider.com"
+    ],
+    "hide_currency": false,
+    "portrait_mode_enabled": false
+};</script>
+        <script src="/game/html5/instant/evoplay/rolldice/libs/preloadUtils.js?v=0.1.51" onload=utils.preloadHTML()></script>
+</head>
+
+<body append-html="/game/html5/instant/evoplay/rolldice/body.html?v=0.1.51">
+
+</body>
+
+</html>

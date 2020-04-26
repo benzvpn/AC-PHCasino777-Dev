@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head append-html="/game/html5/slots/fullstate/evoplay/dolphinstreasure/head.html?v=1.0.46">
+    <script>var jsvars = {
+    "game_path": "\/game\/html5\/slots\/fullstate\/evoplay\/dolphinstreasure\/",
+    "base_path": "\/game\/html5\/slots\/fullstate\/",
+    "game_name": "fullstate\\html5\\evoplay\\dolphinstreasure",
+    "customVars": "7b2230223a2231363733363731222c2231223a2231222c2232223a2231222c2273223a223935336164376333386264636531363537643531323839376336613235646637227d",
+    "back_url": "https:\/\/www.allcasino.bet",
+    "cash_url": "",
+    "redirect_inside_iframe": false,
+    "action_url": "\/fullstate\/html5\/evoplay\/?project=718",
+    "language": "th",
+    "debug": false,
+    "show_clock": true,
+    "show_history": false,
+    "hosts_for_static": [
+        "https:\/\/play.8provider.com"
+    ],
+    "hide_currency": false,
+    "portrait_mode_enabled": false
+};</script>
+        <script src="/game/html5/slots/fullstate/evoplay/dolphinstreasure/libs/preloadUtils.js?v=1.0.46" onload=utils.preloadHTML()></script>
+</head>
+
+<body append-html="/game/html5/slots/fullstate/evoplay/dolphinstreasure/body.html?v=1.0.46">
+
+</body>
+
+</html>

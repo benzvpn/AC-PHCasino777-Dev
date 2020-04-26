@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" /><title>
+	เกมไม่พร้อมใช้งาน
+</title><link rel="stylesheet" href="/styles/bootstrap-3.3.4.min.css" />
+  <style>
+    body {
+      padding-top: 20px;
+    }
+
+    .jumbotron {
+      font-size: 18px;
+      font-weight: 200;
+      line-height: 2.1428571435;
+      color: inherit;
+      padding: 10px 0px;
+    }
+
+    .masthead, .body-content {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .jumbotron {
+      text-align: center;
+      background-color: transparent;
+    }
+
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      .jumbotron p {
+        font-size: 18px;
+      }
+
+    .red {
+      color: #d9534f;
+    }
+
+    .green {
+      color: #0fb26b;
+    }
+
+    .small {
+      font-size: 9px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">      
+      <form method="post" action="./?msg=Keyname%2520%2527SGGlamRock%2527%2520is%2520not%2520found%252Factive%2520in%2520configured%2520games%2520for%2520brandid%2520%2527dc41d953-6a76-e711-80de-000d3a802d1d%2527.&amp;l=https%3a%2f%2fallcasino.bet%2flobby&amp;locale=th" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="He+eB9QVdvEBgWTcKS0j88lVwC14i3BfJGI1LZBg4nHo7KJI0Ngo9VZys/xeLGHK3Qs8aE7ebEZiB3XXdFzMaju1E1tlZc6mLDh0PCuSeQ8jSKGGxW3/oXjQKJDvtMr/crUIkQNf7O6HqUYyNiUzSAoGyQyEcU46wuWt+9VjJe5foIm7gHPL/ymX/rKZf1G9kb4ItwjBJEQT0f15u/HrleaEqVKvXFd25DNd062EwlRdL/al0vW0+8Mh1ClIcatQaARMcS6xRrAJxs3em07f+r0ujMaLJfdk51r0yBWO0BdtkKthaNMHw501KTyxz9PFnevTubkkFZy8eRckWze1OQ==" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0CBC9040" />
+        <p class="lead">
+          Keyname 'SGGlamRock' is not found/active in configured games for brandid 'dc41d953-6a76-e711-80de-000d3a802d1d'.<br>[app-test.insvr.com]
+        </p>
+      </form>
+      <p>
+        <a id="btnLobby" onclick="javascript:gotoLobby();" class="btn btn-default btn-lg"><span class="green">ไปที่ล็อบบี้</span></a>
+        <script type="text/javascript">
+          var lobbyUrl = 'https://allcasino.bet/lobby';
+
+          if (lobbyUrl == '') {
+            document.getElementById('btnLobby').style.display = 'none';
+          }
+          function gotoLobby() {
+            if (lobbyUrl.toLowerCase().indexOf("pm-") == 0) {
+              parent.postMessage(lobbyUrl, "*");
+            }
+            else {
+              top.location.href = lobbyUrl;
+            }
+          }
+        </script>
+      </p>
+
+      <div class="small">GENERAL ERROR | 26-เม.ย.-63 12:39| ENV: test</div>
+    </div>
+  </div>
+</body>
+</html>
+

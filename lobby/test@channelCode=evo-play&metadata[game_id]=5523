@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head append-html="/game/html5/instant/evoplay/magicwheel/head.html?v=1">
+    <script>var jsvars = {
+    "game_path": "\/game\/html5\/instant\/evoplay\/magicwheel\/",
+    "base_path": "\/game\/html5\/instant\/",
+    "game_name": "instant\\html5\\evoplay\\magicwheel",
+    "customVars": "7b2230223a2231363733373036222c2231223a2231222c2232223a2231222c2273223a226531623963613739643934386463393732323035313766386630616662313033227d",
+    "back_url": "https:\/\/www.allcasino.bet",
+    "cash_url": "",
+    "redirect_inside_iframe": false,
+    "action_url": "\/fullstate\/html5\/evoplay\/magicwheel\/?project=718",
+    "language": "en",
+    "debug": false,
+    "show_clock": true,
+    "show_history": false,
+    "hosts_for_static": [
+        "https:\/\/play.8provider.com"
+    ],
+    "hide_currency": false,
+    "portrait_mode_enabled": false
+};</script>
+        <script src="/game/html5/instant/evoplay/magicwheel/libs/preloadUtils.js?v=1" onload=utils.preloadHTML()></script>
+</head>
+
+<body append-html="/game/html5/instant/evoplay/magicwheel/body.html?v=1">
+
+</body>
+
+</html>
