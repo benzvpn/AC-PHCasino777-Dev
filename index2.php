@@ -3,14 +3,636 @@ $site = include(__DIR__ . '/config/site.php');
 $pg = include(__DIR__ . '/config/pg.php');
 ?>
 
+
 <!DOCTYPE html>
-<html lang="th" class="">
+
+<html lang="th" class="x-windows-os">
 
 <head>
-    <?php include(__DIR__ . '/include/header01.php'); ?>
+    <style type="text/css" data-tippy-stylesheet="">
+        .tippy-iOS {
+            cursor: pointer !important;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .tippy-popper {
+            transition-timing-function: cubic-bezier(.165, .84, .44, 1);
+            max-width: calc(100% - 8px);
+            pointer-events: none;
+            outline: 0
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-backdrop {
+            border-radius: 40% 40% 0 0
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-roundarrow {
+            bottom: -7px;
+            bottom: -6.5px;
+            -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0;
+            margin: 0 3px
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-roundarrow svg {
+            position: absolute;
+            left: 0;
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg)
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-arrow {
+            border-top: 8px solid #333;
+            border-right: 8px solid transparent;
+            border-left: 8px solid transparent;
+            bottom: -7px;
+            margin: 0 3px;
+            -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-backdrop {
+            -webkit-transform-origin: 0 25%;
+            transform-origin: 0 25%
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-backdrop[data-state=visible] {
+            -webkit-transform: scale(1) translate(-50%, -55%);
+            transform: scale(1) translate(-50%, -55%)
+        }
+
+        .tippy-popper[x-placement^=top] .tippy-backdrop[data-state=hidden] {
+            -webkit-transform: scale(.2) translate(-50%, -45%);
+            transform: scale(.2) translate(-50%, -45%);
+            opacity: 0
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=shift-toward][data-state=visible] {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=shift-toward][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(-20px);
+            transform: translateY(-20px)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=perspective] {
+            -webkit-transform-origin: bottom;
+            transform-origin: bottom
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=perspective][data-state=visible] {
+            -webkit-transform: perspective(700px) translateY(-10px) rotateX(0);
+            transform: perspective(700px) translateY(-10px) rotateX(0)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=perspective][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: perspective(700px) translateY(0) rotateX(60deg);
+            transform: perspective(700px) translateY(0) rotateX(60deg)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=fade][data-state=visible] {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=fade][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=shift-away][data-state=visible] {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=shift-away][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=scale] {
+            -webkit-transform-origin: bottom;
+            transform-origin: bottom
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=scale][data-state=visible] {
+            -webkit-transform: translateY(-10px) scale(1);
+            transform: translateY(-10px) scale(1)
+        }
+
+        .tippy-popper[x-placement^=top] [data-animation=scale][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(-10px) scale(.5);
+            transform: translateY(-10px) scale(.5)
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-backdrop {
+            border-radius: 0 0 30% 30%
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-roundarrow {
+            top: -7px;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            margin: 0 3px
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-roundarrow svg {
+            position: absolute;
+            left: 0;
+            -webkit-transform: rotate(0);
+            transform: rotate(0)
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-arrow {
+            border-bottom: 8px solid #333;
+            border-right: 8px solid transparent;
+            border-left: 8px solid transparent;
+            top: -7px;
+            margin: 0 3px;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-backdrop {
+            -webkit-transform-origin: 0 -50%;
+            transform-origin: 0 -50%
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-backdrop[data-state=visible] {
+            -webkit-transform: scale(1) translate(-50%, -45%);
+            transform: scale(1) translate(-50%, -45%)
+        }
+
+        .tippy-popper[x-placement^=bottom] .tippy-backdrop[data-state=hidden] {
+            -webkit-transform: scale(.2) translate(-50%);
+            transform: scale(.2) translate(-50%);
+            opacity: 0
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=shift-toward][data-state=visible] {
+            -webkit-transform: translateY(10px);
+            transform: translateY(10px)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=shift-toward][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(20px);
+            transform: translateY(20px)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=perspective] {
+            -webkit-transform-origin: top;
+            transform-origin: top
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=perspective][data-state=visible] {
+            -webkit-transform: perspective(700px) translateY(10px) rotateX(0);
+            transform: perspective(700px) translateY(10px) rotateX(0)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=perspective][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: perspective(700px) translateY(0) rotateX(-60deg);
+            transform: perspective(700px) translateY(0) rotateX(-60deg)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=fade][data-state=visible] {
+            -webkit-transform: translateY(10px);
+            transform: translateY(10px)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=fade][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(10px);
+            transform: translateY(10px)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=shift-away][data-state=visible] {
+            -webkit-transform: translateY(10px);
+            transform: translateY(10px)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=shift-away][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(0);
+            transform: translateY(0)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=scale] {
+            -webkit-transform-origin: top;
+            transform-origin: top
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=scale][data-state=visible] {
+            -webkit-transform: translateY(10px) scale(1);
+            transform: translateY(10px) scale(1)
+        }
+
+        .tippy-popper[x-placement^=bottom] [data-animation=scale][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateY(10px) scale(.5);
+            transform: translateY(10px) scale(.5)
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-backdrop {
+            border-radius: 50% 0 0 50%
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-roundarrow {
+            right: -12px;
+            -webkit-transform-origin: 33.33333333% 50%;
+            transform-origin: 33.33333333% 50%;
+            margin: 3px 0
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-roundarrow svg {
+            position: absolute;
+            left: 0;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg)
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-arrow {
+            border-left: 8px solid #333;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            right: -7px;
+            margin: 3px 0;
+            -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-backdrop {
+            -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-backdrop[data-state=visible] {
+            -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%)
+        }
+
+        .tippy-popper[x-placement^=left] .tippy-backdrop[data-state=hidden] {
+            -webkit-transform: scale(.2) translate(-75%, -50%);
+            transform: scale(.2) translate(-75%, -50%);
+            opacity: 0
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=shift-toward][data-state=visible] {
+            -webkit-transform: translateX(-10px);
+            transform: translateX(-10px)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=shift-toward][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(-20px);
+            transform: translateX(-20px)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=perspective] {
+            -webkit-transform-origin: right;
+            transform-origin: right
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=perspective][data-state=visible] {
+            -webkit-transform: perspective(700px) translateX(-10px) rotateY(0);
+            transform: perspective(700px) translateX(-10px) rotateY(0)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=perspective][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: perspective(700px) translateX(0) rotateY(-60deg);
+            transform: perspective(700px) translateX(0) rotateY(-60deg)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=fade][data-state=visible] {
+            -webkit-transform: translateX(-10px);
+            transform: translateX(-10px)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=fade][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(-10px);
+            transform: translateX(-10px)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=shift-away][data-state=visible] {
+            -webkit-transform: translateX(-10px);
+            transform: translateX(-10px)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=shift-away][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(0);
+            transform: translateX(0)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=scale] {
+            -webkit-transform-origin: right;
+            transform-origin: right
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=scale][data-state=visible] {
+            -webkit-transform: translateX(-10px) scale(1);
+            transform: translateX(-10px) scale(1)
+        }
+
+        .tippy-popper[x-placement^=left] [data-animation=scale][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(-10px) scale(.5);
+            transform: translateX(-10px) scale(.5)
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-backdrop {
+            border-radius: 0 50% 50% 0
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-roundarrow {
+            left: -12px;
+            -webkit-transform-origin: 66.66666666% 50%;
+            transform-origin: 66.66666666% 50%;
+            margin: 3px 0
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-roundarrow svg {
+            position: absolute;
+            left: 0;
+            -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg)
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-arrow {
+            border-right: 8px solid #333;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            left: -7px;
+            margin: 3px 0;
+            -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-backdrop {
+            -webkit-transform-origin: -50% 0;
+            transform-origin: -50% 0
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-backdrop[data-state=visible] {
+            -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%)
+        }
+
+        .tippy-popper[x-placement^=right] .tippy-backdrop[data-state=hidden] {
+            -webkit-transform: scale(.2) translate(-25%, -50%);
+            transform: scale(.2) translate(-25%, -50%);
+            opacity: 0
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=shift-toward][data-state=visible] {
+            -webkit-transform: translateX(10px);
+            transform: translateX(10px)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=shift-toward][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(20px);
+            transform: translateX(20px)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=perspective] {
+            -webkit-transform-origin: left;
+            transform-origin: left
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=perspective][data-state=visible] {
+            -webkit-transform: perspective(700px) translateX(10px) rotateY(0);
+            transform: perspective(700px) translateX(10px) rotateY(0)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=perspective][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: perspective(700px) translateX(0) rotateY(60deg);
+            transform: perspective(700px) translateX(0) rotateY(60deg)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=fade][data-state=visible] {
+            -webkit-transform: translateX(10px);
+            transform: translateX(10px)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=fade][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(10px);
+            transform: translateX(10px)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=shift-away][data-state=visible] {
+            -webkit-transform: translateX(10px);
+            transform: translateX(10px)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=shift-away][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(0);
+            transform: translateX(0)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=scale] {
+            -webkit-transform-origin: left;
+            transform-origin: left
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=scale][data-state=visible] {
+            -webkit-transform: translateX(10px) scale(1);
+            transform: translateX(10px) scale(1)
+        }
+
+        .tippy-popper[x-placement^=right] [data-animation=scale][data-state=hidden] {
+            opacity: 0;
+            -webkit-transform: translateX(10px) scale(.5);
+            transform: translateX(10px) scale(.5)
+        }
+
+        .tippy-tooltip {
+            position: relative;
+            color: #fff;
+            border-radius: .25rem;
+            font-size: .875rem;
+            padding: .3125rem .5625rem;
+            line-height: 1.4;
+            text-align: center;
+            background-color: #333
+        }
+
+        .tippy-tooltip[data-size=small] {
+            padding: .1875rem .375rem;
+            font-size: .75rem
+        }
+
+        .tippy-tooltip[data-size=large] {
+            padding: .375rem .75rem;
+            font-size: 1rem
+        }
+
+        .tippy-tooltip[data-animatefill] {
+            overflow: hidden;
+            background-color: transparent
+        }
+
+        .tippy-tooltip[data-interactive],
+        .tippy-tooltip[data-interactive] .tippy-roundarrow path {
+            pointer-events: auto
+        }
+
+        .tippy-tooltip[data-inertia][data-state=visible] {
+            transition-timing-function: cubic-bezier(.54, 1.5, .38, 1.11)
+        }
+
+        .tippy-tooltip[data-inertia][data-state=hidden] {
+            transition-timing-function: ease
+        }
+
+        .tippy-arrow,
+        .tippy-roundarrow {
+            position: absolute;
+            width: 0;
+            height: 0
+        }
+
+        .tippy-roundarrow {
+            width: 18px;
+            height: 7px;
+            fill: #333;
+            pointer-events: none
+        }
+
+        .tippy-backdrop {
+            position: absolute;
+            background-color: #333;
+            border-radius: 50%;
+            width: calc(110% + 2rem);
+            left: 50%;
+            top: 50%;
+            z-index: -1;
+            transition: all cubic-bezier(.46, .1, .52, .98);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
+        }
+
+        .tippy-backdrop:after {
+            content: "";
+            float: left;
+            padding-top: 100%
+        }
+
+        .tippy-backdrop+.tippy-content {
+            transition-property: opacity;
+            will-change: opacity
+        }
+
+        .tippy-backdrop+.tippy-content[data-state=visible] {
+            opacity: 1
+        }
+
+        .tippy-backdrop+.tippy-content[data-state=hidden] {
+            opacity: 0
+        }
+    </style>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noodp">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
+
+
+
+    <meta name="apple-mobile-web-app-title" content="All Casino บาคาร่า เสือมังกร คาสิโนออนไลน์ ได้เงินจริง แอพบาคาร่า">
+    <title>All Casino บาคาร่า เสือมังกร คาสิโนออนไลน์ ได้เงินจริง แอพบาคาร่า</title>
+
+    <meta name="description" content="เว็บตรง All Casino นิยมแล้วทั่วเอเชีย ด้วยความเสถียร คุณภาพ รวดเร็ว ทั้งแอพและผ่านเว็บ - เกมนิยมมากมาย บาคาร่า เสือมังกร ฝาก-ถอน อัตโนมัติที่ allcasin...">
+    <meta name="keywords" content="">
+
+    <meta property="og:title" content="All Casino บาคาร่า เสือมังกร คาสิโนออนไลน์ ได้เงินจริง แอพบาคาร่า">
+    <meta property="og:description" content="เว็บตรง All Casino นิยมแล้วทั่วเอเชีย ด้วยความเสถียร คุณภาพ รวดเร็ว ทั้งแอพและผ่านเว็บ - เกมนิยมมากมาย บาคาร่า เสือมังกร ฝาก-ถอน อัตโนมัติที่ allcasin...">
+    <meta property="og:locale" content="th">
+    <meta property="og:site_name" content="All Casino">
+    <meta property="og:url" content="<?=$site['host']?>">
+    <meta property="og:image" content="#editme#">
+
+    <link rel="canonical" href="<?=$site['host']?>">
+
+    <meta name="twitter:site" content="@twitter">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="All Casino บาคาร่า เสือมังกร คาสิโนออนไลน์ ได้เงินจริง แอพบาคาร่า">
+    <meta name="twitter:description" content="เว็บตรง All Casino นิยมแล้วทั่วเอเชีย ด้วยความเสถียร คุณภาพ รวดเร็ว ทั้งแอพและผ่านเว็บ - เกมนิยมมากมาย บาคาร่า เสือมังกร ฝาก-ถอน อัตโนมัติที่ allcasin...">
+    <meta name="twitter:image" content="#editme#">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/build/web/all-casino/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/build/web/all-casino/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/build/web/all-casino/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/build/web/all-casino/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/build/web/all-casino/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/build/web/all-casino/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/build/web/all-casino/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/build/web/all-casino/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/build/web/all-casino/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/build/web/all-casino/img/android-icon-192x192.png">
+    <link rel="icon" href="/build/web/all-casino/img/favicon-32x32.png">
+    <link rel="manifest" href="/build/web/all-casino/img/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/build/web/all-casino/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/build/web/all-casino/style.9e9f9d24.css">
+
+
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript">
+        window['gif64'] = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        window['Bonn'] = {
+            boots: [],
+            inits: []
+        };
+    </script>
+    <style>
+        @media print {
+            #ghostery-purple-box {
+                display: none !important
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebPage",
+            "image": [
+                "/build/web/all-casino/img/meta-1x1.jpg",
+                "/build/web/all-casino/img/meta-4x3.jpg",
+                "/build/web/all-casino/img/meta-16x9.jpg"
+            ],
+            "name": "All Casino บาคาร่า เสือมังกร คาสิโนออนไลน์ ได้เงินจริง แอพบาคาร่า",
+            "url": "<?=$site['host'] ?>"
+        }
+    </script>
+    <style data-styled="" data-styled-version="4.2.0"></style>
 </head>
 
-<body>
+<body class="modal-open" style="padding-right: 8px;">
+
 
     <nav class="x-header navbar bg-transparent navbar-expand-lg -anon">
         <div class="container align-items-center">
@@ -47,6 +669,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                 <img src="/build/web/all-casino/img/bg-allcasino-3.png" alt="icon chip" class="-bg-3">
             </div>
 
+
             <div class="x-contact-us 1">
                 <div class="-line-container">
                     <a href="https://lin.ee/hGWtbsg" target="_blank">
@@ -63,36 +686,16 @@ $pg = include(__DIR__ . '/config/pg.php');
 
             <div class="container -inner-wrapper">
                 <div>
-                    <div class="-title" data-animatable="fadeInUp" data-delay="500">
+                    <div class="-title animated fadeInUp" data-animatable="fadeInUp" data-delay="500">
                         <img src="/build/web/all-casino/img/logo.gif" alt="All Casino logo" class="-logo-title">
                         <img src="/build/web/all-casino/img/coin.gif" alt="All Casino logo" class="-logo-coin">
                     </div>
                     <div>
-                        <h2 data-animatable="fadeInUp" data-delay="500" class="text-white mt-2 mb-0 h5 -sub-title text-center font-weight-normal">บาคาร่า คาสิโนออนไลน์ sagaming wmcasino sexygaming</h2>
+                        <h2 data-animatable="fadeInUp" data-delay="500" class="text-white mt-2 mb-0 h5 -sub-title text-center font-weight-normal animated fadeInUp">บาคาร่า คาสิโนออนไลน์ sagaming wmcasino sexygaming</h2>
                     </div>
                 </div>
-                <div class="x-modal modal" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true" data-loading-container=".modal-body" data-ajax-modal-always-reload="true" data-ajax-modal="/_ajax_/register" data-container="#registerModal">
-                    <div class="modal-dialog -modal-size " role="document">
-                        <div class="modal-content -modal-content">
-                            <img src="/build/web/all-casino/img/border-modal.png" class="img-fluid d-lg-block d-none -border-top-modal" alt="">
-                            <button type="button" class="close f-1" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="modal-header border-bottom-0 mt-3 pb-0 d-flex flex-column-reverse">
-                                <h3 class="x-title-modal font-weight-normal d-inline-block m-auto text-white">
-                                    <span></span>
-                                    <hr class="x-hr-border-glow">
-                                </h3>
-                            </div>
-                            <div class="modal-body">
-                                <div class="js-modal-content">
-                                </div>
-                            </div>
-                            <img src="/build/web/all-casino/img/border-modal.png" class="img-fluid d-lg-block d-none -border-bottom-modal" alt="">
-                        </div>
-                    </div>
-                </div>
-                <!--
+
+
                 <div class="x-modal modal show" id="registerModal" tabindex="-1" role="dialog" data-loading-container=".modal-body" data-ajax-modal-always-reload="true" data-ajax-modal="/_ajax_/register" data-container="#registerModal" style="display: block; padding-right: 8px;" aria-modal="true">
                     <div class="modal-dialog -modal-size " role="document" style="margin-top: 159.992px;">
                         <div class="modal-content -modal-content">
@@ -218,14 +821,13 @@ $pg = include(__DIR__ . '/config/pg.php');
                         </div>
                     </div>
                 </div>
-                -->
 
                 <div class="x-modal modal" id="resetPasswordModal" tabindex="-1" role="dialog" aria-hidden="true" data-loading-container=".modal-body" data-ajax-modal-always-reload="true" data-ajax-modal="/_ajax_/reset-password" data-container="#resetPasswordModal">
                     <div class="modal-dialog -modal-size " role="document">
                         <div class="modal-content -modal-content">
                             <img src="/build/web/all-casino/img/border-modal.png" class="img-fluid d-lg-block d-none -border-top-modal" alt="">
                             <button type="button" class="close f-1" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">×</span>
                             </button>
                             <div class="modal-header border-bottom-0 mt-3 pb-0 d-flex flex-column-reverse">
                                 <h3 class="x-title-modal font-weight-normal d-inline-block m-auto text-white">
@@ -242,49 +844,47 @@ $pg = include(__DIR__ . '/config/pg.php');
                     </div>
                 </div>
 
-                <div class="row mt-3 -btn-actions justify-content-center" data-animatable="fadeInUp" data-delay="700">
+                <div class="row mt-3 -btn-actions justify-content-center animated fadeInUp" data-animatable="fadeInUp" data-delay="700">
                     <div class="col-7 col-sm-5 col-lg-3">
-                        <!-- Registration -->
-                        <!--
                         <button type="button" class="btn btn-primary btn-block -register-button" data-toggle="modal" data-target="#registerModal">สมัครสมาชิก
                         </button>
-                        -->
-                        <button type="button" class="btn btn-primary btn-block -register-button" onclick="location.href='/register';">สมัครสมาชิก</button>
                     </div>
                     <div class="col-8 col-md-4 col-lg-3 offset-2 offset-md-4 offset-lg-0 d-none d-lg-block">
                         <a href="/lobby" target="_blank" class="btn btn-primary btn-block -demo-top-button">
-                            <img src="/build/web/all-casino/img/ic-blackjack.png" alt="All casino blackjack png" class="-icon-blackjack"> ทดลองเล่น
+                            <img src="/build/web/all-casino/img/ic-blackjack.png" alt="All casino blackjack png" class="-icon-blackjack">
+                            ทดลองเล่น
                         </a>
                     </div>
                 </div>
 
-                <div class="-lobby-logo-section" data-animatable="fadeInUp" data-delay="900">
+                <div class="-lobby-logo-section animated fadeInUp" data-animatable="fadeInUp" data-delay="900">
 
                     <ul class="-nav-container">
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/sa-gaming-logo-circle.png" class="-logo" alt="sa-gaming logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/sa-gaming-logo-circle.png" class="-logo" alt="sa-gaming logo png">
                         </li>
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/wm-logo-circle.png" class="-logo" alt="wm logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/wm-logo-circle.png" class="-logo" alt="wm logo png">
                         </li>
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/bbin-logo-circle.png" class="-logo" alt="bbin logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/bbin-logo-circle.png" class="-logo" alt="bbin logo png">
                         </li>
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/sexy-bac-logo-circle.png" class="-logo" alt="sexy-bac logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/sexy-bac-logo-circle.png" class="-logo" alt="sexy-bac logo png">
                         </li>
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/netent-live-logo-circle.png" class="-logo" alt="netent-live logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/netent-live-logo-circle.png" class="-logo" alt="netent-live logo png">
                         </li>
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/dream-gaming-logo-circle.png" class="-logo" alt="dream-gaming logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/dream-gaming-logo-circle.png" class="-logo" alt="dream-gaming logo png">
                         </li>
                         <li class="-nav-item">
-                            <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/asia-gaming-logo-circle.png" class="-logo" alt="asia-gaming logo png">
+                            <img src="<?=$site['host']?>/build/admin/img/lobby_main/asia-gaming-logo-circle.png" class="-logo" alt="asia-gaming logo png">
                         </li>
                     </ul>
                 </div>
             </div>
+
 
             <div class="x-service-wrapper">
                 <div class="container">
@@ -301,8 +901,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                                     <span class="d-none d-lg-block text-muted-lighter f-5">รวดเร็วทันใจ <br> สนุกได้ทุกเวลา</span>
                                     <span class="d-block d-lg-none text-muted-lighter f-5">รวดเร็วทันใจ สนุกได้ทุกเวลา</span>
                                 </div>
-                            </a>
-                        </div>
+                            </a> </div>
 
                         <div class="col-11 col-sm-9 col-md-4 mb-lg-0 mb-2 text-center -box d-flex align-items-start d-md-block -box">
                             <div class="-ic-wrapper">
@@ -341,8 +940,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                         <img src="/build/web/all-casino/img/line-long-glow.png" alt="Line long glow png" class="-line-glow">
                         <li class="nav-item  active -index js-tab-scrolled" id="tab-index">
                             <a data-toggle="tab" href="#tab-content-index" class="nav-link active">
-                                <img src="/build/web/all-casino/img/tab_index.png" alt="logo_index" class="-ic">
-                                <br>
+                                <img src="/build/web/all-casino/img/tab_index.png" alt="logo_index" class="-ic"><br>
                                 <span class="d-sm-none d-inline-block mt-2 text-gray-lighter">Casino</span>
                                 <span class="d-sm-inline-block d-none mt-2 text-gray-lighter">All Casino</span>
                                 <hr class="x-hr-border-glow mb-0">
@@ -350,8 +948,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                         </li>
                         <li class="nav-item   -promotion js-tab-scrolled" id="tab-promotion">
                             <a data-toggle="tab" href="#tab-content-promotion" class="nav-link ">
-                                <img src="/build/web/all-casino/img/tab_promotion.png" alt="logo_promotion" class="-ic">
-                                <br>
+                                <img src="/build/web/all-casino/img/tab_promotion.png" alt="logo_promotion" class="-ic"><br>
                                 <span class="d-sm-none d-inline-block mt-2 text-gray-lighter">โปรโมชั่น</span>
                                 <span class="d-sm-inline-block d-none mt-2 text-gray-lighter">โปรโมชั่น</span>
                                 <hr class="x-hr-border-glow mb-0">
@@ -359,8 +956,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                         </li>
                         <li class="nav-item   -manual js-tab-scrolled" id="tab-manual">
                             <a data-toggle="tab" href="#tab-content-manual" class="nav-link ">
-                                <img src="/build/web/all-casino/img/tab_manual.png" alt="logo_manual" class="-ic">
-                                <br>
+                                <img src="/build/web/all-casino/img/tab_manual.png" alt="logo_manual" class="-ic"><br>
                                 <span class="d-sm-none d-inline-block mt-2 text-gray-lighter">แนะนำ</span>
                                 <span class="d-sm-inline-block d-none mt-2 text-gray-lighter">แนะนำการใช้งาน</span>
                                 <hr class="x-hr-border-glow mb-0">
@@ -368,8 +964,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                         </li>
                         <li class="nav-item   -event js-tab-scrolled" id="tab-event">
                             <a data-toggle="tab" href="#tab-content-event" class="nav-link ">
-                                <img src="/build/web/all-casino/img/tab_event.png" alt="logo_event" class="-ic">
-                                <br>
+                                <img src="/build/web/all-casino/img/tab_event.png" alt="logo_event" class="-ic"><br>
                                 <span class="d-sm-none d-inline-block mt-2 text-gray-lighter">กิจกรรม</span>
                                 <span class="d-sm-inline-block d-none mt-2 text-gray-lighter">กิจกรรม</span>
                                 <hr class="x-hr-border-glow mb-0">
@@ -410,6 +1005,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                                 <div class="container">
                                     <h2 class="-title">ขั้นตอนการสมัครสมาชิก All Casino</h2>
 
+
                                     <div class="row -box-wrapper">
                                         <div class="col-md-4">
                                             <div class="-box">
@@ -439,7 +1035,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                                                     <img src="/build/web/all-casino/img/ic_bank.png" alt="Allcasino icon png" class="-ic-bank">
                                                     <div class="-desc-wrap">
                                                         <div class="-title">3. ใส่เลขบัญชีและชื่อบัญชี</div>
-                                                        <div class="-description">กรอกเลขบัญชีของคุณพร้อมชื่อให้ถูกต้อง เข้าร่วมสนุกกับ <span class='text-warning'>Allcasino</span> ได้ทันที</div>
+                                                        <div class="-description">กรอกเลขบัญชีของคุณพร้อมชื่อให้ถูกต้อง เข้าร่วมสนุกกับ <span class="text-warning">Allcasino</span> ได้ทันที</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -456,6 +1052,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                                             <div class="-sub-title">เปิดประสบการณ์สนุกไปอีกขั้น กับคาสิโนออนไลน์ที่เหนือระดับ ทางเลือกของคนยุคใหม่ ที่จะทำให้คุณบอกลาเว็ปแบบเดิมๆ เพลิดเพลินไปกับการเดิมพันได้อย่างมั่นใจ เล่นทั้งที เล่นเว็บตรง CASINO ตัวจริงต้อง ออลล์คาสิโนเท่านั้น</div>
                                         </div>
                                         <div class="row -middle-content text-center">
+
 
                                             <div class="col-md-4 col-10 -middle-content-bg-inner">
                                                 <img class="img-fluid -img-element -item-1" src="/build/web/all-casino/img/index_middle_element_01.png" alt="All casino image png">
@@ -483,65 +1080,65 @@ $pg = include(__DIR__ . '/config/pg.php');
 
                                         <ul class="-nav-container-casino">
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/sa-gaming-logo-circle.png" class="-logo" alt="sa-gaming logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/sa-gaming-logo-circle.png" class="-logo" alt="sa-gaming logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/wm-logo-circle.png" class="-logo" alt="wm logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/wm-logo-circle.png" class="-logo" alt="wm logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/bbin-logo-circle.png" class="-logo" alt="bbin logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/bbin-logo-circle.png" class="-logo" alt="bbin logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/sexy-bac-logo-circle.png" class="-logo" alt="sexy-bac logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/sexy-bac-logo-circle.png" class="-logo" alt="sexy-bac logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/netent-live-logo-circle.png" class="-logo" alt="netent-live logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/netent-live-logo-circle.png" class="-logo" alt="netent-live logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/dream-gaming-logo-circle.png" class="-logo" alt="dream-gaming logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/dream-gaming-logo-circle.png" class="-logo" alt="dream-gaming logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/asia-gaming-logo-circle.png" class="-logo" alt="asia-gaming logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/asia-gaming-logo-circle.png" class="-logo" alt="asia-gaming logo png">
                                             </li>
                                         </ul>
                                         <ul class="-nav-container-slot">
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/skill-game-cover-vertical.png" class="-logo" alt="skill-game logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/skill-game-logo-horizontal.png" class="-logo mt-2" alt="skill-game logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/skill-game-cover-vertical.png" class="-logo" alt="skill-game logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/skill-game-logo-horizontal.png" class="-logo mt-2" alt="skill-game logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/evo-play-cover-vertical.png" class="-logo" alt="evo-play logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/evo-play-logo-horizontal.png" class="-logo mt-2" alt="evo-play logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/evo-play-cover-vertical.png" class="-logo" alt="evo-play logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/evo-play-logo-horizontal.png" class="-logo mt-2" alt="evo-play logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/netent-slot-cover-vertical.png" class="-logo" alt="netent-slot logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/netent-slot-logo-horizontal.png" class="-logo mt-2" alt="netent-slot logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/netent-slot-cover-vertical.png" class="-logo" alt="netent-slot logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/netent-slot-logo-horizontal.png" class="-logo mt-2" alt="netent-slot logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/sp-cover-vertical.png" class="-logo" alt="sp logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/sp-logo-horizontal.png" class="-logo mt-2" alt="sp logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/sp-cover-vertical.png" class="-logo" alt="sp logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/sp-logo-horizontal.png" class="-logo mt-2" alt="sp logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/habanero-cover-vertical.png" class="-logo" alt="habanero logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/habanero-logo-horizontal.png" class="-logo mt-2" alt="habanero logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/habanero-cover-vertical.png" class="-logo" alt="habanero logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/habanero-logo-horizontal.png" class="-logo mt-2" alt="habanero logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/joker-cover-vertical.png" class="-logo" alt="joker logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/joker-logo-horizontal.png" class="-logo mt-2" alt="joker logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/joker-cover-vertical.png" class="-logo" alt="joker logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/joker-logo-horizontal.png" class="-logo mt-2" alt="joker logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/ps-cover-vertical.png" class="-logo" alt="ps logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/ps-logo-horizontal.png" class="-logo mt-2" alt="ps logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/ps-cover-vertical.png" class="-logo" alt="ps logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/ps-logo-horizontal.png" class="-logo mt-2" alt="ps logo png">
                                             </li>
                                         </ul>
                                         <ul class="-nav-container-other">
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/pinnacle-cover-vertical.png" class="-logo" alt="pinnacle logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/pinnacle-logo-horizontal.png" class="-logo mt-2" alt="pinnacle logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/pinnacle-cover-vertical.png" class="-logo" alt="pinnacle logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/pinnacle-logo-horizontal.png" class="-logo mt-2" alt="pinnacle logo png">
                                             </li>
                                             <li class="-nav-item">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/imsb-cover-vertical.png" class="-logo" alt="imsb logo png">
-                                                <img src="<?= $site['host'] ?>/build/admin/img/lobby_main/imsb-logo-horizontal.png" class="-logo mt-2" alt="imsb logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/imsb-cover-vertical.png" class="-logo" alt="imsb logo png">
+                                                <img src="<?=$site['host']?>/build/admin/img/lobby_main/imsb-logo-horizontal.png" class="-logo mt-2" alt="imsb logo png">
                                             </li>
                                         </ul>
                                     </div>
@@ -596,8 +1193,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                                                             <span class="d-none d-lg-block text-muted-lighter f-5">กรอกเบอร์โทรศัพท์มือถือ ของคุณให้ถูกต้อง</span>
                                                             <span class="d-block d-lg-none text-muted-lighter f-5">กรอกเบอร์โทรศัพท์มือถือ ของคุณให้ถูกต้อง</span>
                                                         </div>
-                                                    </a>
-                                                </div>
+                                                    </a> </div>
 
                                                 <div class="col-11 col-sm-9 col-md-4 text-center -box d-flex align-items-start d-md-block -box">
                                                     <div class="-ic-wrapper">
@@ -639,14 +1235,13 @@ $pg = include(__DIR__ . '/config/pg.php');
                                                             <img src="/build/web/all-casino/img/ic_step_deposit.png" alt="icon register" class="-ic">
                                                         </div>
                                                         <div class="text-left text-md-center">
-                                                            <h3 class="text-gray-lighter"><span class="d-inline-block d-md-none">1.</span> กด &quot;ฝากเงิน&quot;</h3>
+                                                            <h3 class="text-gray-lighter"><span class="d-inline-block d-md-none">1.</span> กด "ฝากเงิน"</h3>
                                                             <hr class="x-hr-border-glow">
 
                                                             <span class="d-none d-lg-block text-muted-lighter f-5">"กรอกจำนวนเงิน" กด "ต้องการรับโปรโมชั่น" เพื่อรับโบนัสที่ต้องการ และกด "ยืนยัน"</span>
                                                             <span class="d-block d-lg-none text-muted-lighter f-5">"กรอกจำนวนเงิน" กด "ต้องการรับโปรโมชั่น" เพื่อรับโบนัสที่ต้องการ และกด "ยืนยัน"</span>
                                                         </div>
-                                                    </a>
-                                                </div>
+                                                    </a> </div>
 
                                                 <div class="col-11 col-sm-9 col-md-4 text-center -box d-flex align-items-start d-md-block -box">
                                                     <div class="-ic-wrapper">
@@ -666,7 +1261,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                                                         <img src="/build/web/all-casino/img/ic_step_deposit_done.png" alt="icon register" class="-ic">
                                                     </div>
                                                     <div class="text-left text-md-center">
-                                                        <h3 class="text-gray-lighter"><span class="d-inline-block d-md-none">3.</span> กด &quot;โอนแล้ว&quot;</h3>
+                                                        <h3 class="text-gray-lighter"><span class="d-inline-block d-md-none">3.</span> กด "โอนแล้ว"</h3>
                                                         <hr class="x-hr-border-glow">
 
                                                         <span class="d-none d-lg-block text-muted-lighter f-5">ส่งรายการฝาก ระบบจะตรวจสอบเงิน และ เติมเงินทันที</span>
@@ -688,14 +1283,13 @@ $pg = include(__DIR__ . '/config/pg.php');
                                                             <img src="/build/web/all-casino/img/ic_step_withdraw.png" alt="icon register" class="-ic">
                                                         </div>
                                                         <div class="text-left text-md-center">
-                                                            <h3 class="text-gray-lighter"><span class="d-inline-block d-md-none">1.</span> กด &quot;ถอนเงิน&quot;</h3>
+                                                            <h3 class="text-gray-lighter"><span class="d-inline-block d-md-none">1.</span> กด "ถอนเงิน"</h3>
                                                             <hr class="x-hr-border-glow">
 
                                                             <span class="d-none d-lg-block text-muted-lighter f-5">"กรอกจำนวนเงิน ถอน" และกด "ยืนยัน"</span>
                                                             <span class="d-block d-lg-none text-muted-lighter f-5">"กรอกจำนวนเงิน ถอน" และกด "ยืนยัน"</span>
                                                         </div>
-                                                    </a>
-                                                </div>
+                                                    </a> </div>
 
                                                 <div class="col-11 col-sm-9 col-md-4 text-center -box d-flex align-items-start d-md-block -box">
                                                     <div class="-ic-wrapper">
@@ -773,7 +1367,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                 <div class="modal-content -modal-content">
                     <img src="/build/web/all-casino/img/border-modal.png" class="img-fluid d-lg-block d-none -border-top-modal" alt="">
                     <button type="button" class="close f-1" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                     <div class="modal-header border-bottom-0 mt-3 pb-0 d-flex flex-column-reverse">
                         <h3 class="x-title-modal font-weight-normal d-inline-block m-auto text-white">
@@ -796,12 +1390,12 @@ $pg = include(__DIR__ . '/config/pg.php');
             </div>
         </div>
 
-        <div class="x-modal modal" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true" data-loading-container=".js-modal-content" data-ajax-modal-always-reload="true">
-            <div class="modal-dialog -modal-size " role="document">
+        <div class="x-modal modal" id="loginModal" tabindex="-1" role="dialog" data-loading-container=".js-modal-content" data-ajax-modal-always-reload="true" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog -modal-size " role="document" style="margin-top: 257.672px;">
                 <div class="modal-content -modal-content">
                     <img src="/build/web/all-casino/img/border-modal.png" class="img-fluid d-lg-block d-none -border-top-modal" alt="">
                     <button type="button" class="close f-1" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                     <div class="modal-header border-bottom-0 mt-3 pb-0 d-flex flex-column-reverse">
                         <h3 class="m-auto text-white d-inline-block">
@@ -811,11 +1405,11 @@ $pg = include(__DIR__ . '/config/pg.php');
                     </div>
                     <div class="modal-body">
                         <div class="x-login-form">
-                            <div data-animatable="fadeInModal" data-offset="0" class="-animatable-container">
+                            <div data-animatable="fadeInModal" data-offset="0" class="-animatable-container animated fadeInModal">
                                 <form action="/login-json-check" class="js-login-form x-header-login-form">
                                     <div class="-x-input-icon mb-3 flex-column">
                                         <img src="/build/web/all-casino/img/ic_phone.png" class="-icon" alt="login" width="12">
-                                        <input type="text" id="username" name="username" pattern="[0-9]*" autofocus class="form-control x-form-control" placeholder="เบอร์โทรศัพท์">
+                                        <input type="text" id="username" name="username" pattern="[0-9]*" autofocus="" class="form-control x-form-control" placeholder="เบอร์โทรศัพท์">
                                     </div>
                                     <div class="-x-input-icon flex-column">
                                         <img src="/build/web/all-casino/img/ic_lock_input.png" class="-icon" alt="password" width="13">
@@ -841,11 +1435,14 @@ $pg = include(__DIR__ . '/config/pg.php');
             </div>
         </div>
 
+
         <script id="b-loading" type="text/template">
         </script>
 
         <script id="loading" type="text/template">
         </script>
+
+
 
         <footer class="x-footer py-3">
             <div class="-inner-wrapper pt-4">
@@ -881,8 +1478,7 @@ $pg = include(__DIR__ . '/config/pg.php');
         </footer>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <!--
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154557947-6"></script>
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-154557947-6"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
 
@@ -893,7 +1489,6 @@ $pg = include(__DIR__ . '/config/pg.php');
 
             gtag('config', 'UA-154557947-6');
         </script>
-        -->
     </div>
     <script>
         Bonn.boots.push(function() {
@@ -924,8 +1519,11 @@ $pg = include(__DIR__ . '/config/pg.php');
     <script src="/build/runtime.js"></script>
     <script src="/build/0.9a86198d.js"></script>
     <script src="/build/3.3e8fa25a.js"></script>
-    <script src="/build/web/all-casino/app.js"></script>
+    <script src="/build/web/all-casino/app.002920f7.js"></script>
 
+
+
+    <div class="modal-backdrop show"></div>
 </body>
 
 </html>
