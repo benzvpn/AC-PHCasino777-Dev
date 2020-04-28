@@ -14,23 +14,6 @@ $_SESSION['captcha'] = simple_php_captcha();
 <html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="th" style="">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,user-scalable=no">
-    <meta name="description" content="ตัวแทนตรงจาก SAGAME คาสิโนออนไลน์ บาคาร่า เสือมังกร ไฮโล รูเล็ต สล็อต slot กำถั่ว คาสิโนสด live casino ระบบฝากถอน AUTO 30วินาที ดีที่สุดในไทย">
-    <meta name="keywords" content="sagame, sagame1688, คาสิโนออนไลน์, บาคาร่าออนไลน์, บาคาร่า, คาสิโนสด, คาสิโนออนไลน์, sagaming, เสือสังกร, ไฺฮโล, รูเล็ต, สล็อตออนไลน์, เกมส์สล็อตออนไลน์, สล็อต, เกมสล็อต ,กำถั่ว , slot ออนไลน์, slot online, live คาสิโน,  คาสิโน auto ฝากถอน, เล่นคาสิโนออนไลน์, casino sagame, casino sagaming">
-    <meta property="og:url" content="<?= $site['host'] ?>">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="<?= $site['title'] ?>">
-    <meta property="og:description" content="ตัวแทนตรงจาก SAGAME คาสิโนออนไลน์ บาคาร่า เสือมังกร ไฮโล รูเล็ต สล็อต slot กำถั่ว คาสิโนสด live casino ระบบฝากถอน AUTO 30วินาที ดีที่สุดในไทย">
-    <meta property="og:image" content="<?= $site['host'] ?>/assets/img/icon.png">
-    <meta property="og:image:alt" content="สมัครวันนี้รับโบนัส 50% ฟรีทันที">
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="/assets/img/fav.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/assets/img/logo.png">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate,max-age=0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <!-- Title -->
     <title>
         <?= $site['title'] ?>
@@ -42,7 +25,8 @@ $_SESSION['captcha'] = simple_php_captcha();
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="/assets/css/font-awesome.min.css"> -->
 
     <!-- Elegent Icon CSS -->
     <link rel="stylesheet" href="/assets/css/elegent-icons.css">
@@ -56,41 +40,21 @@ $_SESSION['captcha'] = simple_php_captcha();
     <!-- toastr css -->
     <link rel="stylesheet" href="/assets/css/toastr.min.css">
 
-    <!-- sweetalert2 -->
-    <link rel="stylesheet" href="/assets/css/sweetalert2.css">
+    <!-- SweetAlert2 <link rel="stylesheet" href="/assets/css/sweetalert2.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
-    <!-- modernizr JS
-    ============================================ -->
-    <script src="https://connect.facebook.net/signals/config/2408990612763027?v=2.9.15&amp;r=stable" async=""></script>
-    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- jQuery <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+
     <style>
-        @media print {
-            #ghostery-purple-box {
-                display: none !important
-            }
+        .field-icon {
+            float: right;
+            margin-left: 0px;
+            margin-top: -38px;
+            position: relative;
+            z-index: 2;
         }
     </style>
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!--
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-155353834-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-155353834-1');
-    </script>
-    -->
-    <style data-styled="" data-styled-version="4.2.0"></style>
 </head>
 
 <body>
@@ -105,28 +69,35 @@ $_SESSION['captcha'] = simple_php_captcha();
                         <input type="text" required="" class="form__input form__input--2" id="phone" name="phone" maxlength="10" placeholder="กรุณากรอกเบอร์โทรศัพท์">
                     </div>
                     <div class="form-group">
-                        <label for="password">รหัสผ่าน</label>
-                        <input type="text" required="" class="form__input form__input--2" id="password" maxlength="24" name="password" placeholder="โปรดใส่รหัสผ่าน">
+                        <label for="password" onclick="showPassword()">รหัสผ่าน</label>
+                        <input type="password" required="" class="form__input form__input--2" id="password-field" maxlength="24" name="password" placeholder="โปรดใส่รหัสผ่าน">
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password fa-2x"></span>
+                        <!--
+                        <input id="password-field" type="password" class="form-control" name="password" value="secret">
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        -->
                     </div>
-                    <label for="name">ชื่อ - นามสกุล</label>
+
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" required="" class="form__input form__input--2" id="name" name="name" placeholder="ชื่อจริง">
+                            <label for="name">ชื่อ</label>
+                            <input type="text" required="" class="form__input form__input--2" id="firstname" name="firstname" placeholder="ชื่อจริง">
                         </div>
                         <div class="col">
-                            <input type="text" required="" class="form__input form__input--2" id="surname" name="surname" placeholder="นามสกุล">
+                            <label for="name">นามสกุล</label>
+                            <input type="text" required="" class="form__input form__input--2" id="lastname" name="lastname" placeholder="นามสกุล">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="banknumber">หมายเลขบัญชี</label>
-                        <input type="text" class="form__input form__input--2" id="banknumber" maxlength="15" required="" name="banknumber" placeholder="หมายเลขบัญชีธนาคาร">
+                        <label for="banknumber">หมายเลขบัญชีธนาคาร</label>
+                        <input type="text" class="form__input form__input--2" id="bankaccount" maxlength="15" required="" name="bankaccount" placeholder="หมายเลขบัญชีธนาคาร">
                         <small id="infomation" class="form-text text-muted ">
                             ชื่อและนามสกุลของบัญชีต้องตรงกับที่กรอกมา
                         </small>
                     </div>
                     <div class="form-group">
                         <label for="banktype">ธนาคาร</label>
-                        <select class="form__input form__input--2" id="banktype" required="" name="banktype">
+                        <select class="form__input form__input--2" id="bankcode" required="" name="bankcode">
                             <option value="000">ไทยพาณิชย์</option>
                             <option value="002">กรุงเทพ</option>
                             <option value="004">กสิกรไทย</option>
@@ -158,9 +129,9 @@ $_SESSION['captcha'] = simple_php_captcha();
                     </div>
                     <div class="form-group">
                         <label for="captcha">
-                            <img src="<?=$_SESSION['captcha']['image_src']?>" class="img-fluid"> 
-                        </label> <?=$_SESSION['captcha']['code']?>
-                        <input type="text" class="form__input form__input--2" id="captcha" required="" name="captcha" placeholder="กรอกตัวอักษรในรูปที่ท่านเห็น">
+                            <img src="<?= $_SESSION['captcha']['image_src'] ?>" class="img-fluid">
+                        </label> CAPTCHA
+                        <input type="text" class="form__input form__input--2" id="captcha" required="" name="captcha" placeholder="กรอกตัวอักษร (CAPTCHA) ในรูปที่ท่านเห็น">
                     </div>
                     <input type="hidden" name="aff" value="">
                     <button type="submit" class="btn btn-style-2">ลงทะเบียน</button>
@@ -172,27 +143,14 @@ $_SESSION['captcha'] = simple_php_captcha();
 
     <!-- ************************* JS Files ************************* -->
 
-    <!-- jQuery JS -->
-    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <?php
+    include(dirname(__FILE__) . '/include/footer_js.php');
+    ?>
 
-    <!-- Bootstrap and Popper Bundle JS -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- All Plugins Js -->
-    <script src="/assets/js/plugins.js"></script>
-
-    <!-- Toastr Js -->
-    <script src="/assets/js/toastr.min.js"></script>
-
-    <!-- SweetAlert2 Js -->
-    <script src="/assets/js/sweetalert2.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="/assets/js/main.js"></script>
     <script type="text/javascript">
         $("#login_form").submit(function(e) {
             e.preventDefault();
-            $.post('/member/api/login', $(this).serialize(), function(data) {
+            $.post('/exec/login', $(this).serialize(), function(data) {
                 $("#results").html(data)
             });
             return false;
@@ -200,11 +158,35 @@ $_SESSION['captcha'] = simple_php_captcha();
     </script>
     <script>
         $("#register_form").submit(function(e) {
+            //sayHi();
             e.preventDefault();
             $.post('/exec/register.php', $(this).serialize(), function(data) {
-                $("#results").html(data)
+                $("#alerts").html(data)
             });
             return false;
+        });
+    </script>
+    <script>
+        function showPassword() {
+            var x = document.getElementById("password-field");
+
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+    <script>
+        $(".toggle-password").click(function() {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var passValue = document.getElementById("password-field");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
         });
     </script>
 
