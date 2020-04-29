@@ -1,15 +1,18 @@
 
 <?php
+
+session_start();
+
 //error_reporting(-1);
 /*
-$config = include(__DIR__ . '\..\config\site.php');
-print_r($config);
+$site = include(__DIR__ . '\..\config\site.php');
+print_r($site);
 exit();*/
 
 
 
 if (empty($_POST['phone'])) {
-    echo "<script>swal.fire('ข้อมูลไม่ครบ','กรุณากรอก เบอร์โทร', 'error');</script>";
+    echo "<script>swal.fire('ข้อมูลไม่ครบ','กรุณากรอก เบอร์โทรศัพท์', 'error');</script>";
 } elseif (empty($_POST['password'])) {
     echo "<script>swal.fire('ข้อมูลไม่ครบ','กรุณากรอก รหัสผ่าน', 'error');</script>";
 } elseif (empty($_POST['firstname'])) {
@@ -28,7 +31,7 @@ if (empty($_POST['phone'])) {
     require_once '../dbmodel.php';
     require_once '../function.php';
 
-    $config = include(__DIR__ . '/config/site.php');
+    $site = include(__DIR__ . '/../config/site.php');
 
 
     // Check duplicated IP
@@ -45,14 +48,14 @@ if (empty($_POST['phone'])) {
     // Gen player session
     //$player_session = urlencode(hash("sha256",rand()));
     
-    $player_session = uniqid();
+    //$player_session = uniqid();
+    $member_login = uniqid();
 
-    $query = "SELECT count(member_login) AS player_session FROM `members` WHERE member_login = '" . $player_session . "' GROUP BY member_login";
+    $query = "SELECT count(member_login) AS member_login FROM `members` WHERE member_login = '" . $member_login . "' GROUP BY member_login";
     $count_query = $mysqli->query($query)->fetch_assoc();
 
-    while ($count_query['player_session'] > 0) {
+    while ($count_query['member_login'] > 0) {
         $player_session = urlencode(uniqid());
-        $query = "SELECT count(member_login) AS player_session FROM `members` WHERE member_login = '" . $player_session . "' GROUP BY member_login";
         $count_query = $mysqli->query($query)->fetch_assoc();  
     }
 
@@ -60,20 +63,21 @@ if (empty($_POST['phone'])) {
     $password = str_check(trim($_POST['password']));
     $name = str_check(trim($_POST['firstname']));
     $surname = str_check(trim($_POST['lastname']));
-    $banktype = bank_type_rename(str_check(trim($_POST['bankcode'])));
+    $banktype = str_check(trim($_POST['bankcode']));
     $banknumber = str_check(trim($_POST['bankaccount']));
     $lineid = str_check(trim($_POST['lineid']));
     $row_bank = check_bank_num($banknumber);
     $row_line = check_line($lineid);
     $row_phone = check_phone($phone);
     $aff = NULL;
-    $member_login = trim($player_session);
     $first_deposit_bonus = 0;
     $captcha_code = trim($_POST['captcha']);
 
-    if (isset($_POST['promo'])) {
-        $first_deposit_bonus = $_POST['promo'];
-    }
+    /*
+    echo 'captcha : ' . $captcha_code . PHP_EOL;
+    echo 'captcha : ' . $_SESSION['captcha']['code'] . PHP_EOL;
+    exit();
+    */
 
 	$register_date = date("Y-m-d H:i:s");
     $re = "/^(?=.*[a-z])(?=.*\\d).{8,}$/i";
@@ -100,7 +104,7 @@ if (empty($_POST['phone'])) {
         echo "<script>swal.fire('ข้อมูลซ้ำ','หมายเลขโทรศัพท์: $phone นี้ถูกใช้งานแล้ว', 'error');</script>";
     } elseif ($row_line > 0) {
         echo "<script>swal.fire('ข้อมูลซ้ำ','ไลน์ไอดี: $lineid นี้ถูกใช้งานแล้ว', 'error');</script>";
-    } elseif ($_SESSION['captcha']['code' <> $captcha_code]) {
+    } elseif ($_SESSION['captcha']['code'] <> $captcha_code) {
         echo "<script>swal.fire('ข้อมูลผิด','CAPTCHA ไม่ถูกต้อง', 'error');</script>";
     } else {
         
@@ -114,7 +118,7 @@ if (empty($_POST['phone'])) {
             $uid = 1;
         }
         $uid += 100000;
-        $username = $config['site_id'] . $uid ;
+        $username = $site['site_id'] . $uid ;
         
         $level = 0;
         $ocode = '';
@@ -147,9 +151,9 @@ if (empty($_POST['phone'])) {
         
         $row = $mysqli->query("SELECT * FROM members WHERE member_username = '" . $username. "'")->fetch_assoc();
         $_SESSION['username'] = $row['member_username'];
-        $_SESSION['operator_player_session'] = $row['member_login'];
+        $_SESSION['member_login'] = $row['member_login'];
         //echo "<script>swal.fire('". $_SESSION['operator_player_session'] ."');</script>";
-        echo "<script>window.location = '/profile.php?'</script>";
+        echo "<script>window.location = '/profile'</script>";
     }
     
 }

@@ -252,7 +252,7 @@ $pg = include(__DIR__ . '/config/pg.php');
                         <button type="button" class="btn btn-primary btn-block -register-button" onclick="location.href='/register';">สมัครสมาชิก</button>
                     </div>
                     <div class="col-8 col-md-4 col-lg-3 offset-2 offset-md-4 offset-lg-0 d-none d-lg-block">
-                        <a href="/lobby" target="_blank" class="btn btn-primary btn-block -demo-top-button">
+                        <a href="/trial-lobby" target="_blank" class="btn btn-primary btn-block -demo-top-button">
                             <img src="/build/web/all-casino/img/ic-blackjack.png" alt="All casino blackjack png" class="-icon-blackjack"> ทดลองเล่น
                         </a>
                     </div>

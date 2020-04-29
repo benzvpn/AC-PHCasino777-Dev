@@ -66,11 +66,11 @@ $_SESSION['captcha'] = simple_php_captcha();
                 <form id="register_form">
                     <div class="form-group">
                         <label for="phone">เบอร์โทรศัพท์</label>
-                        <input type="text" required="" class="form__input form__input--2" id="phone" name="phone" maxlength="10" placeholder="กรุณากรอกเบอร์โทรศัพท์">
+                        <input type="text"  class="form__input form__input--2" id="phone" name="phone" maxlength="10" placeholder="กรุณากรอกเบอร์โทรศัพท์">
                     </div>
                     <div class="form-group">
                         <label for="password" onclick="showPassword()">รหัสผ่าน</label>
-                        <input type="password" required="" class="form__input form__input--2" id="password-field" maxlength="24" name="password" placeholder="โปรดใส่รหัสผ่าน">
+                        <input type="password"  class="form__input form__input--2" id="password-field" maxlength="24" name="password" placeholder="โปรดใส่รหัสผ่าน">
                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password fa-2x"></span>
                         <!--
                         <input id="password-field" type="password" class="form-control" name="password" value="secret">
@@ -81,23 +81,23 @@ $_SESSION['captcha'] = simple_php_captcha();
                     <div class="form-row">
                         <div class="col">
                             <label for="name">ชื่อ</label>
-                            <input type="text" required="" class="form__input form__input--2" id="firstname" name="firstname" placeholder="ชื่อจริง">
+                            <input type="text"  class="form__input form__input--2" id="firstname" name="firstname" placeholder="ชื่อจริง">
                         </div>
                         <div class="col">
                             <label for="name">นามสกุล</label>
-                            <input type="text" required="" class="form__input form__input--2" id="lastname" name="lastname" placeholder="นามสกุล">
+                            <input type="text"  class="form__input form__input--2" id="lastname" name="lastname" placeholder="นามสกุล">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="banknumber">หมายเลขบัญชีธนาคาร</label>
-                        <input type="text" class="form__input form__input--2" id="bankaccount" maxlength="15" required="" name="bankaccount" placeholder="หมายเลขบัญชีธนาคาร">
+                        <input type="text" class="form__input form__input--2" id="bankaccount" maxlength="15"  name="bankaccount" placeholder="หมายเลขบัญชีธนาคาร">
                         <small id="infomation" class="form-text text-muted ">
                             ชื่อและนามสกุลของบัญชีต้องตรงกับที่กรอกมา
                         </small>
                     </div>
                     <div class="form-group">
                         <label for="banktype">ธนาคาร</label>
-                        <select class="form__input form__input--2" id="bankcode" required="" name="bankcode">
+                        <select class="form__input form__input--2" id="bankcode"  name="bankcode">
                             <option value="000">ไทยพาณิชย์</option>
                             <option value="002">กรุงเทพ</option>
                             <option value="004">กสิกรไทย</option>
@@ -125,13 +125,13 @@ $_SESSION['captcha'] = simple_php_captcha();
                     </div>
                     <div class="form-group">
                         <label for="lineid">Line ID</label>
-                        <input type="text" class="form__input form__input--2" id="lineid" required="" name="lineid" placeholder="หากไม่มีไลน์ ให้ใส่เบอร์มือถือแทน">
+                        <input type="text" class="form__input form__input--2" id="lineid"  name="lineid" placeholder="หากไม่มีไลน์ ให้ใส่เบอร์มือถือแทน">
                     </div>
                     <div class="form-group">
                         <label for="captcha">
                             <img src="<?= $_SESSION['captcha']['image_src'] ?>" class="img-fluid">
                         </label> CAPTCHA
-                        <input type="text" class="form__input form__input--2" id="captcha" required="" name="captcha" placeholder="กรอกตัวอักษร (CAPTCHA) ในรูปที่ท่านเห็น">
+                        <input type="text" class="form__input form__input--2" id="captcha"  name="captcha" placeholder="กรอกตัวอักษร (CAPTCHA) ในรูปที่ท่านเห็น">
                     </div>
                     <input type="hidden" name="aff" value="">
                     <button type="submit" class="btn btn-style-2">ลงทะเบียน</button>

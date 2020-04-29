@@ -104,23 +104,24 @@ function bank_name($str_bnk)
         $str_bnk = addslashes($str_bnk);
     }
 
-    $str_bnk = str_replace("SCB", "ไทยพาณิชย์", $str_bnk);
-    $str_bnk = str_replace("BBL", "กรุงเทพ", $str_bnk);
-    $str_bnk = str_replace("KBANK", "กสิกรไทย", $str_bnk);
-    $str_bnk = str_replace("KTB", "กรุงไทย", $str_bnk);
-    $str_bnk = str_replace("BAAC", "ธกส.", $str_bnk);
-    $str_bnk = str_replace("TMB", "ทหารไทย", $str_bnk);
-    $str_bnk = str_replace("CIMB", "ซีไอเอ็มบี ไทย", $str_bnk);
-    $str_bnk = str_replace("UOB", "ยูโอบี", $str_bnk);
-    $str_bnk = str_replace("BAY", "กรุงศรีอยุธยา", $str_bnk);
-    $str_bnk = str_replace("GSB", "ออมสิน", $str_bnk);
-    $str_bnk = str_replace("LHB", "แลนแอนด์เฮาส์", $str_bnk);
-    $str_bnk = str_replace("TBN", "ธนชาต", $str_bnk);
-    $str_bnk = str_replace("TSCO", "ทิสโก้", $str_bnk);
-    $str_bnk = str_replace("KKP", "เกียรตินาคิน", $str_bnk);
-    $str_bnk = str_replace("ISBT", "อิสลามแห่งประเทศไทย", $str_bnk);
-    $str_bnk = str_replace("GHB", "อาคารสงเคราะห์", $str_bnk);
-    $str_bnk = str_replace("CITI", "ซิตี้แบงค์", $str_bnk);
+    $str_bnk = str_replace("000", "ไทยพาณิชย์", $str_bnk);
+    $str_bnk = str_replace("002", "กรุงเทพ", $str_bnk);
+    $str_bnk = str_replace("004", "กสิกรไทย", $str_bnk);
+    $str_bnk = str_replace("006", "กรุงไทย", $str_bnk);
+    $str_bnk = str_replace("034", "ธกส.", $str_bnk);
+    $str_bnk = str_replace("011", "ทหารไทย", $str_bnk);
+    $str_bnk = str_replace("022", "ซีไอเอ็มบี ไทย", $str_bnk);
+    $str_bnk = str_replace("024", "ยูโอบี", $str_bnk);
+    $str_bnk = str_replace("025", "กรุงศรีอยุธยา", $str_bnk);
+    $str_bnk = str_replace("030", "ออมสิน", $str_bnk);
+    $str_bnk = str_replace("073", "แลนแอนด์เฮาส์", $str_bnk);
+    $str_bnk = str_replace("065", "ธนชาต", $str_bnk);
+    $str_bnk = str_replace("067", "ทิสโก้", $str_bnk);
+    $str_bnk = str_replace("069", "เกียรตินาคิน", $str_bnk);
+    $str_bnk = str_replace("066", "อิสลามแห่งประเทศไทย", $str_bnk);
+    $str_bnk = str_replace("033", "อาคารสงเคราะห์", $str_bnk);
+    $str_bnk = str_replace("017", "ซิตี้แบงค์", $str_bnk);
+    $str_bnk = str_replace("070", "ไอซีบีซี", $str_bnk);
 
     return $str_bnk;
 }
